@@ -40,6 +40,7 @@ body > #nav-header {
 	margin-left: -8px;
 	height: 65em;
 	width: 101.5%;
+	margin-bottom: -8px;
 	background-color: #04819E;
 	top: 0;
 	left: 0;
@@ -58,7 +59,7 @@ body > #nav-header {
 		border-radius: 15px;
 
 		h1 {
-			margin-left: 32%;
+			margin-left: 34%;
 		}
 
 		p {
@@ -79,7 +80,7 @@ body > #nav-header {
 				line-height: 30px;
 				// background-color: #6E84D6;
 				background-color: #6672A0;
-				min-width: 150px;
+				min-width: 155px;
 				display: inline-block;
 
 				&:hover { 
@@ -107,6 +108,7 @@ body > #nav-header {
 		width: 40%;
 		margin-left: 50%;
 		margin-top: 50%;
+		padding-top: 5px;
 
 		background-color: #60B9CE;
 		-webkit-border-radius: 15px;
@@ -133,9 +135,28 @@ body > #nav-header {
 		}
 	}
 
-	#left-side {
+	#error-text {
 		width: 50%;
+		height: 30px;
+		display:none;
 		z-index: 500;
+		opacity: 0.8;
+		background-color: #60B9CE;
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+		position:absolute;
+		margin-top: 50%;
+		margin-left: 25%;
+		
+		p {
+			padding-left: 10px;
+			margin-top: 10px;
+			line-height: 18px;
+			padding-bottom: 28px;
+			overflow-x: scroll;
+			width: 90%
+		}
 	}
 
 	#right-side {
@@ -147,7 +168,7 @@ body > #nav-header {
 
 #background-icons {
 	margin-top: 0.3em;
-	font-size: 150px;
+	font-size: 145px;
 	width: 100%;
 	position: absolute;
 	line-height: 1.1em;
