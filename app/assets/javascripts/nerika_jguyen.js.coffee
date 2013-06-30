@@ -20,6 +20,7 @@ nyanz.landing = ->
 		zipCode = zipIn.val()
 
 		if zipCode.length == 5
+			submitZip.find('.loader').show()
 			destURL = 'http://api.worldweatheronline.com/free/v1/weather.ashx?q=' + zipCode + '&format=json&num_of_days=5&key=mjdut3p7jcgm2u5c7wbbc438'
 
 			$.ajax
@@ -31,6 +32,8 @@ nyanz.landing = ->
 					showWeather(data)
 				error: (data) ->
 					console.log data
+				complete: ->
+					submitZip.find('.loader').hide()
 
 	# weatherOutput.mouseover (e) ->
 	# 	# if $(e.target).is(':visible')
