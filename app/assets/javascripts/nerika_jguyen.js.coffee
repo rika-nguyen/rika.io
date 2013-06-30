@@ -3,10 +3,9 @@ nyanz.landing = ->
 	zipIn = $('#zip-code')
 	weatherOutput = $('#weather-out')
 	dayStrings = ['tomorrow', 'day after tomorrow', 'day after that', 'today + 4 days']
-
-	$(document).ready ->
-		# submitZip = $('#get-weather')
-		# zip = $('#zip-code')
+	isLoading = false
+	loaderIcon = $('.loader')
+	errText = $('#error-text')
 
 	zipIn.keyup (e) ->
 		if e.which == 13
@@ -18,9 +17,11 @@ nyanz.landing = ->
 
 	submitZipData = ->
 		zipCode = zipIn.val()
+		errText.fadeOut()
 
 		if zipCode.length == 5
-			submitZip.find('.loader').show()
+			isLoading = true
+			loaderIcon.show()
 			destURL = 'http://api.worldweatheronline.com/free/v1/weather.ashx?q=' + zipCode + '&format=json&num_of_days=5&key=mjdut3p7jcgm2u5c7wbbc438'
 
 			$.ajax
@@ -29,14 +30,24 @@ nyanz.landing = ->
 				dataType: 'jsonp'
 				success: (data) ->
 					console.log data
-					showWeather(data)
+					if data.data.error
+						showError(data.data.error[0].msg)
+					else
+						showWeather(data)
 				error: (data) ->
 					console.log data
 				complete: ->
-					submitZip.find('.loader').hide()
+					loaderIcon.hide()
 
-	# weatherOutput.mouseover (e) ->
-	# 	# if $(e.target).is(':visible')
+	showError = (data) ->
+		errMsg = data
+		weatherOutput.fadeOut()
+		errText.children('p').text(errMsg)
+		newHeight = 15 + parseInt(errMsg.length / 40) * 18
+		console.log errMsg.length + ',' + newHeight
+
+
+		errText.css({ 'height': newHeight }).fadeIn()
 		
 	showWeather = (data) ->
 		rightNow = data.data.current_condition[0]
@@ -76,6 +87,11 @@ nyanz.landing = ->
 			scrollTop: $(weatherOutput).offset().top
 		}, 2000);
 
+		#scroll to elem
+		$('html, body').animate({
+	        scrollTop: $(weatherOutput).offset().top
+	    }, 2000);
+
 	getWeatherIcon = (desc) ->
 		desc = desc.replace(/\s/g, '')
 		icon = eval('window.descToIcon.' + desc)
@@ -85,10 +101,6 @@ nyanz.landing = ->
 			iconString = "<span class='temp-text bigger-small-text'>"
 			iconString += icon
 			iconString += "</span>"
-
+			
 			return iconString
 
-
-
-
-	
