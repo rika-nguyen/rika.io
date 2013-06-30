@@ -72,6 +72,9 @@ nyanz.landing = ->
 			$('.day.day' + i).append(currString)
 
 		weatherOutput.fadeIn()
+		$('html, body').animate({
+	        scrollTop: $(weatherOutput).offset().top
+	    }, 2000);
 
 	getWeatherIcon = (desc) ->
 		desc = desc.replace(/\s/g, '')
