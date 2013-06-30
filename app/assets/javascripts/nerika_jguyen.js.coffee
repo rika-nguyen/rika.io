@@ -83,6 +83,9 @@ nyanz.landing = ->
 			$('.day.day' + i).append(currString)
 
 		weatherOutput.fadeIn()
+		$('html, body').animate({
+			scrollTop: $(weatherOutput).offset().top
+		}, 2000);
 
 		#scroll to elem
 		$('html, body').animate({
@@ -98,5 +101,6 @@ nyanz.landing = ->
 			iconString = "<span class='temp-text bigger-small-text'>"
 			iconString += icon
 			iconString += "</span>"
-
+			
 			return iconString
+
