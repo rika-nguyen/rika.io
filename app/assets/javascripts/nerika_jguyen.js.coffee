@@ -72,6 +72,8 @@ nyanz.landing = ->
 			$('.day.day' + i).append(currString)
 
 		weatherOutput.fadeIn()
+
+		#scroll to elem
 		$('html, body').animate({
 	        scrollTop: $(weatherOutput).offset().top
 	    }, 2000);
