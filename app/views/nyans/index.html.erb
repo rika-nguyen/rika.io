@@ -12,7 +12,7 @@
 		<p>coming soon: ability to change the weather</p>
 		<br/>
 		<div id="find-weather">
-			<input type="text" id="zip-code" tabindex="1" placeholder="zip code">
+			<input type="text"  id="zip-code" tabindex="1" placeholder="zip code" value="<%= @zip %>">
 			<div id="get-weather" tabindex="2" type="submit"><span>Get Weather</span><img src="/assets/loader.gif" alt="" class="loader"></div>
 		</div>
 
@@ -45,7 +45,7 @@
 </div>	
 
 <script type="text/javascript">
-	nyanz.landing()
+	nyanz.landing(<%= @zip %>)
 </script>
 
 <% end %>

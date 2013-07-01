@@ -15,6 +15,8 @@ RikaIo::Application.routes.draw do
 
   root :to => 'nyans#index'
 
+  get '/:zip' => 'nyans#index'
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
