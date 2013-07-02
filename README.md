@@ -7,3 +7,5 @@ came the 'check the weather' part. I used World Wide Weather's api for that.
 
 Currently hosted on http://whispering-hollows-3151.herokuapp.com/
 
+You can tack your zipcode onto the URL as well. 
+For example: whispering-hollows-3151.herokuapp.com/94104
