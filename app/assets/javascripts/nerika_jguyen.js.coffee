@@ -1,4 +1,4 @@
-nyanz.landing = ->
+nyanz.landing = (args) ->
 	submitZip = $('#get-weather')
 	zipIn = $('#zip-code')
 	weatherOutput = $('#weather-out')
@@ -6,6 +6,10 @@ nyanz.landing = ->
 	isLoading = false
 	loaderIcon = $('.loader')
 	errText = $('#error-text')
+
+	$(document).ready ->
+		if args
+			submitZipData()
 
 	zipIn.keyup (e) ->
 		if e.which == 13
@@ -29,7 +33,7 @@ nyanz.landing = ->
 				type: 'GET'
 				dataType: 'jsonp'
 				success: (data) ->
-					console.log data
+					# console.log data
 					if data.data.error
 						showError(data.data.error[0].msg)
 					else
@@ -83,14 +87,11 @@ nyanz.landing = ->
 			$('.day.day' + i).append(currString)
 
 		weatherOutput.fadeIn()
-		$('html, body').animate({
-			scrollTop: $(weatherOutput).offset().top
-		}, 2000);
 
 		#scroll to elem
 		$('html, body').animate({
 	        scrollTop: $(weatherOutput).offset().top
-	    }, 2000);
+	    }, 500);
 
 	getWeatherIcon = (desc) ->
 		desc = desc.replace(/\s/g, '')
@@ -101,6 +102,6 @@ nyanz.landing = ->
 			iconString = "<span class='temp-text bigger-small-text'>"
 			iconString += icon
 			iconString += "</span>"
-			
+
 			return iconString
 
